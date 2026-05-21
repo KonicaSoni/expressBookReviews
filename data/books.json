@@ -1,0 +1,22 @@
+{
+    "1":{
+        "isbn":"1",
+        "title":"JavaScript Basics",
+        "author":"John Smith",
+        "reviews":{}
+    },
+
+    "2":{
+        "isbn":"2",
+        "title":"Node.js Guide",
+        "author":"David Miller",
+        "reviews":{}
+    },
+
+    "3":{
+        "isbn":"3",
+        "title":"Express Framework",
+        "author":"Mark Taylor",
+        "reviews":{}
+    }
+}
