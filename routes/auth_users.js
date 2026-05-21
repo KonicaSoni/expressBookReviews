@@ -40,27 +40,24 @@ message:"Review added/updated"
 
 // Delete review
 
-router.delete(
+router.delete("/auth/review/:isbn",(req,res)=>{
 
-"/auth/review/:isbn",
-verifyToken,
+    let isbn=req.params.isbn;
 
-(req,res)=>{
+    if(books[isbn]){
 
-let isbn=req.params.isbn;
+        books[isbn].reviews={};
 
-let username=req.user.username;
+        return res.status(200).json({
+            message:`Review for ISBN ${isbn} deleted`
+        });
 
-delete books[isbn].reviews[username];
+    }
 
-res.json({
-
-message:"Review deleted"
+    return res.status(404).json({
+        message:"Book not found"
+    });
 
 });
-
-}
-
-);
 
 module.exports=router;
