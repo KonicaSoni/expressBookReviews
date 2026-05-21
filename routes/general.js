@@ -69,7 +69,60 @@ message:"Invalid credentials"
 });
 
 });
-// Get reviews by ISBN
+// Search by ISBN
+router.get("/books/isbn/:isbn",(req,res)=>{
+
+let isbn=req.params.isbn;
+
+if(books[isbn]){
+
+res.json(books[isbn]);
+
+}
+else{
+
+res.status(404).json({
+message:"Book not found"
+});
+
+}
+
+});
+
+
+// Search by author
+router.get("/books/author/:author",(req,res)=>{
+
+let author=req.params.author;
+
+let filteredBooks=Object.values(books).filter(
+
+book=>book.author.toLowerCase().includes(author.toLowerCase())
+
+);
+
+res.json(filteredBooks);
+
+});
+
+
+// Search by title
+router.get("/books/title/:title",(req,res)=>{
+
+let title=req.params.title;
+
+let filteredBooks=Object.values(books).filter(
+
+book=>book.title.toLowerCase().includes(title.toLowerCase())
+
+);
+
+res.json(filteredBooks);
+
+});
+
+
+// Get reviews for a book
 router.get("/books/review/:isbn",(req,res)=>{
 
     let isbn=req.params.isbn;
